@@ -1,0 +1,17 @@
+function MatrixRank(A)
+{
+    var m = A.length, n = A[0].length, k = (m < n ? m : n), r = 1, rank = 0;
+    while (r <= k)
+     { var B = [];
+       for (var i = 0; i < r; i++) B[i] = [];
+       for (var a = 0; a < m-r+1; a++)
+        { for (var b = 0; b < n-r+1; b++)
+           { for (var c = 0; c < r; c++)
+              { for (var d = 0; d < r; d++) B[c][d] = A[a+c][b+d]; }
+             if (Determinant(B) != 0) rank = r;
+           }       // Функцию Determinant см. выше
+        }
+       r++;
+     }
+    return rank;
+}
